@@ -1,13 +1,10 @@
-use iocraft::prelude::*;
+mod cli;
+mod config;
+mod system;
+
+use clap::{command, Command};
 
 fn main() {
-    element! {
-        View (
-            border_style: BorderStyle::Round,
-            border_color: Color::Blue,
-        ) {
-            Text(content: "Cores: 8")
-        }
-    }
-    .print();
+    let cli = cli::build_cli();
+    let matches = cli::get_matches(cli);
 }
